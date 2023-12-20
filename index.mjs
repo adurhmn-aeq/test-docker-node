@@ -2,7 +2,11 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.end("The value of TEST_ENV is " + process.env.TEST_ENV);
+  res.json({
+    TEST_ENV: process.env.TEST_ENV,
+    TEST_ENV_NO_ARG: String(process.env.TEST_ENV_NO_ARG),
+    TEST_ENV_NO_DEFAULT: String(process.env.TEST_ENV_NO_DEFAULT),
+  });
 });
 
 app.listen(process.env.PORT || 3000, () => {
